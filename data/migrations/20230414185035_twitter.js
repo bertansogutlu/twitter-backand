@@ -56,11 +56,14 @@ exports.up = function(knex) {
    */
   exports.down = function(knex) {
     return knex.schema
-    .dropTableIfExists('order_toppings')
-    .dropTableIfExists('orders')
-    .dropTableIfExists('toppings')
-    .dropTableIfExists('pizzas')
+    .dropTableIfExists('fallowers')
+    .dropTableIfExists('followings')
+    .dropTableIfExists('comments')
+    .dropTableIfExists('likes')
+    .dropTableIfExists('favorites')
+    .dropTableIfExists('retweets')
+    .dropTableIfExists('tweets')
     .dropTableIfExists('users')
-    .dropTableIfExists('roles')
+    
   };
   

@@ -5,42 +5,47 @@
 exports.up = function(knex) {
 
     return knex.schema
-    .createTable('roles',t=>{
-      t.increments('role_id')
-      t.string('role').notNullable().unique()
-    })
     .createTable('users',t=>{
       t.increments('user_id')
-      t.string('username').notNullable()
-      t.string('surname').notNullable()
       t.string('email').notNullable().unique()
+      t.string('username').notNullable()
       t.string('password').notNullable()
-      t.integer('role_id').defaultTo(2).notNullable().unsigned().references('role_id').inTable('roles')
+      t.string('role').defaultTo("user").notNullable()
     })
-    .createTable('pizzas',t=>{
-      t.increments('pizza_id')
-      t.string('pizza').notNullable()
-      t.text('description').notNullable()
-      t.decimal('price').notNullable().unsigned()
-    })
-    .createTable('toppings',t=>{
-      t.increments('topping_id')
-      t.string('topping').notNullable()
-    })
-    .createTable('orders',t=>{
-      t.increments('order_id')
+    .createTable('tweets',t=>{
+      t.increments('tweet_id')
       t.integer('user_id').notNullable().references('user_id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
-      t.string('dough').notNullable()
-      t.string('size').notNullable()
-      t.integer('quantity').notNullable()
-      t.text('note')
-      t.string('status').notNullable()
-      t.decimal('price').notNullable().unsigned()
-      t.integer('pizza_id').notNullable().references('pizza_id').inTable('pizzas').onDelete('CASCADE').onUpdate('CASCADE')
+      t.text('tweet').notNullable()
     })
-    .createTable('order_toppings',t=>{
-      t.integer('order_id').notNullable().unsigned().references('order_id').inTable('orders').onDelete('CASCADE').onUpdate('CASCADE')
-      t.integer('topping_id').notNullable().unsigned().references('topping_id').inTable('toppings')
+    .createTable('retweets',t=>{
+      t.increments('retweet_id')
+      t.integer('user_id').notNullable().references('user_id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
+      t.integer('tweet_id').notNullable().references('tweet_id').inTable('tweets').onDelete('CASCADE').onUpdate('CASCADE')
+    })
+    .createTable('favorites',t=>{
+      t.increments('favorite_id')
+      t.integer('user_id').notNullable().references('user_id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
+      t.integer('tweet_id').notNullable().references('tweet_id').inTable('tweets').onDelete('CASCADE').onUpdate('CASCADE')
+    })
+    .createTable('likes',t=>{
+      t.increments('like_id')
+      t.integer('user_id').notNullable().references('user_id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
+      t.integer('tweet_id').notNullable().references('tweet_id').inTable('tweets').onDelete('CASCADE').onUpdate('CASCADE')
+    })
+    .createTable('comments',t=>{
+      t.increments('comment_id')
+      t.integer('user_id').notNullable().references('user_id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
+      t.text('comment').notNullable()
+    })
+    .createTable('followings',t=>{
+      t.increments('following_id')
+      t.integer('user_id').notNullable().references('user_id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
+      t.integer('following_user_id').notNullable()
+    })
+    .createTable('fallowers',t=>{
+      t.increments('fallower_id')
+      t.integer('user_id').notNullable().references('user_id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
+      t.integer('fallower_user_id').notNullable()
     })
   
   };

@@ -1,0 +1,38 @@
+{
+  "name": "twitter-backand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "rollback": "knex migrate:rollback",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed",
+    "test": "cross-env node_env=testing jest --verbose --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bertansogutlu/twitter-backand.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bertansogutlu/twitter-backand/issues"
+  },
+  "homepage": "https://github.com/bertansogutlu/twitter-backand#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "knex": "^2.4.2",
+    "sqlite3": "^5.1.6"
+  }
+}

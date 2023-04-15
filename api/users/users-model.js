@@ -12,13 +12,13 @@ async function getByEmail(email) {
   return await db("users").where("email", email).first();
 }
 
-async function create(order) {
-  const [id] = await db("users").insert(order);
+async function create(payload) {
+  const [id] = await db("users").insert(payload);
   return getById(id);
 }
 
-async function updateById(id, user) {
-  await db("users").where("user_id", id).update(user);
+async function updateById(id, payload) {
+  await db("users").where("user_id", id).update(payload);
   return getById(id);
 }
 

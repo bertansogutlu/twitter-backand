@@ -23,28 +23,58 @@ exports.seed = async function(knex) {
     {user_id: 1, tweet: 'Tweet one'},
     {user_id: 2, tweet: 'Tweet two'},
     {user_id: 3, tweet: 'Tweet three'},
+    {user_id: 1, tweet: 'Tweet four'},
+    {user_id: 2, tweet: 'Tweet five'},
+    {user_id: 3, tweet: 'Tweet six'},
+    {user_id: 1, tweet: 'Tweet seven'},
+    {user_id: 2, tweet: 'Tweet eight'},
+    {user_id: 3, tweet: 'Tweet nine'},
   ]);
   await knex('retweets').insert([
     {user_id: 1, tweet_id: 3},
     {user_id: 2, tweet_id: 2},
     {user_id: 3, tweet_id: 1},
+    {user_id: 1, tweet_id: 6},
+    {user_id: 2, tweet_id: 5},
+    {user_id: 3, tweet_id: 4},
+    {user_id: 1, tweet_id: 9},
+    {user_id: 2, tweet_id: 8},
+    {user_id: 3, tweet_id: 7},
   ]);
   await knex('favorites').insert([
     {user_id: 1, tweet_id: 3},
     {user_id: 2, tweet_id: 2},
     {user_id: 3, tweet_id: 1},
+    {user_id: 1, tweet_id: 6},
+    {user_id: 2, tweet_id: 5},
+    {user_id: 3, tweet_id: 4},
+    {user_id: 1, tweet_id: 9},
+    {user_id: 2, tweet_id: 8},
+    {user_id: 3, tweet_id: 7},
   ]);
   await knex('likes').insert([
     {user_id: 1, tweet_id: 3},
     {user_id: 2, tweet_id: 2},
     {user_id: 3, tweet_id: 1},
+    {user_id: 1, tweet_id: 6},
+    {user_id: 2, tweet_id: 5},
+    {user_id: 3, tweet_id: 4},
+    {user_id: 1, tweet_id: 9},
+    {user_id: 2, tweet_id: 8},
+    {user_id: 3, tweet_id: 7},
   ]);
   await knex('comments').insert([
-    {user_id: 1, comment: "Comment one"},
-    {user_id: 2, comment: "Comment two"},
-    {user_id: 3, comment: "Comment three"},
+    {user_id: 1, comment: 'Comment one'},
+    {user_id: 2, comment: 'Comment two'},
+    {user_id: 3, comment: 'Comment three'},
+    {user_id: 1, comment: 'Comment four'},
+    {user_id: 2, comment: 'Comment five'},
+    {user_id: 3, comment: 'Comment six'},
+    {user_id: 1, comment: 'Comment seven'},
+    {user_id: 2, comment: 'Comment eight'},
+    {user_id: 3, comment: 'Comment nine'},
   ]);
-  await knex('fallowings').insert([
+  await knex('followings').insert([
     {user_id: 1, following_user_id: 3},
     {user_id: 2, following_user_id: 2},
     {user_id: 3, following_user_id: 1},

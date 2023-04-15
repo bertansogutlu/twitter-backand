@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const usersModel = require("./users-model");
+const retweetsModel = require("./retweets-model");
 
 
 router.get("/", async (req, res, next) => {
   try {
-    const users = await usersModel.getAll();
-    res.status(200).json(users);
+    const retweets = await retweetsModel.getAll();
+    res.status(200).json(retweets);
   } catch (error) {
     next(error);
   }
@@ -13,8 +13,8 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const user = await usersModel.getById(req.params.id);
-    res.status(200).json(user);
+    const retweet = await retweetsModel.getById(req.params.id);
+    res.status(200).json(retweet);
   } catch (error) {
     next(error);
   }
@@ -22,8 +22,8 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const user = await usersModel.create(req.body);
-    res.status(201).json(user);
+    const retweet = await retweetsModel.create(req.body);
+    res.status(201).json(retweet);
   } catch (error) {
     next(error);
   }
@@ -31,8 +31,8 @@ router.post("/", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const user = await usersModel.updateById(req.params.id, req.body);
-    res.status(200).json(user);
+    const retweet = await retweetsModel.updateById(req.params.id, req.body);
+    res.status(200).json(retweet);
   } catch (error) {
     next(error);
   }
@@ -40,8 +40,8 @@ router.put("/:id", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const users = await usersModel.deleteById(req.params.id);
-    res.status(200).json(users);
+    const retweet = await retweetsModel.deleteById(req.params.id);
+    res.status(200).json(retweet);
   } catch (error) {
     next(error);
   }
